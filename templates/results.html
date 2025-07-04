@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Results</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}?v=7" />
+  </head>
+  <body>
+    <div id="results-container">
+      <center><h1>Poll Results</h1></center>
+      {% for set in form_sets %}
+      <b><p class="question">{{set.pk}}. {{set.question}}</p></b>
+      <div class="each-option">
+        <span>option1 : </span>
+        <span>{{set.option_One}}</span>
+      </div>
+      <div class="each-option">
+        <span>option2 : </span>
+        <span>{{set.option_Two}}</span>
+      </div>
+      <div class="each-option">
+        <span>option3 : </span>
+        <span>{{set.option_Three}}</span>
+      </div>
+      <div>
+        <b>votes :</b>
+        <span>option1 : {{set.option_one_count}}</span>
+        <span>option2 : {{set.option_two_count}}</span>
+        <span>option3 : {{set.option_three_count}}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>

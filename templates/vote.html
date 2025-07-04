@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vote</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}?v=7" />
+  </head>
+  <body>
+    <div class="voting-container">
+    <h1 class="heading">Select the Option</h1>
+
+    <form method="POST">
+      {% csrf_token %}
+
+      <p class="question">{{ form_set.pk }}. {{ form_set.question }}</p>
+
+      <div class="each-option">
+        <label>
+          <input type="radio" name="choice" value="option_One" required/>
+          {{ form_set.option_One }}
+        </label>
+      </div>
+
+      <div class="each-option">
+        <label>
+          <input type="radio" name="choice" value="option_Two" />
+          {{ form_set.option_Two }}
+        </label>
+      </div>
+
+      <div class="each-option">
+        <label>
+          <input type="radio" name="choice" value="option_Three" />
+          {{ form_set.option_Three }}
+        </label>
+      </div>
+
+      <button id="poll-submit" type="submit">Submit</button>
+    </form>
+    </div>
+  </body>
+</html>

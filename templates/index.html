@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Poll App</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}?v=7" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li>Poll Application</li>
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'create' %}">Create</a></li>
+          <li><a href="{% url 'results' %}">Results</a></li>
+
+        </ul>
+      </nav>
+    </header>
+
+    <div class="display-questions">
+      <center><h1>Available Polls</h1></center>
+
+      <table border="0" cellpadding="8">
+        <tr>
+          <th>Question</th>
+          <th>Action</th>
+        </tr>
+
+        {% for set in form_sets %}
+        <tr>
+          <td>{{ set.question }}</td>
+          <td>
+            <a href="{% url 'vote' set.id %}">
+              <button id="get-poll">Poll</button>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </body>
+</html>
