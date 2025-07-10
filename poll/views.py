@@ -31,15 +31,15 @@ def load_form(request):
 
 def vote(request, pk):
     form_set = CreateForm.objects.get(pk=pk)
-    if request.method=='POST':
-        selected_option=request.POST.get('choice')
+    if request.method == 'POST':
+        selected_option = request.POST.get('choice')
 
-        if selected_option=='option_One':
-            form_set.option_one_count+=1
-        elif selected_option=='option_Two':
-            form_set.option_two_count+=1
-        elif selected_option=='option_Three':
-            form_set.option_three_count+=1
+        if selected_option == 'option_One':
+            form_set.option_one_count += 1
+        elif selected_option == 'option_Two':
+            form_set.option_two_count += 1
+        elif selected_option == 'option_Three':
+            form_set.option_three_count += 1
 
         form_set.save()
         return redirect('index')
